@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-U3</title>
+    <script type="application/javascript">
+        const personer = [];
+        function register() {
+            const person={
+                navn:this.navn,
+                adresse:this.adresse,
+                telefonnr:this.telefonnr
+            };
+
+            person.navn = document.getElementById("navn").value;
+            person.adresse = document.getElementById("adresse").value;
+            person.telefonnr = document.getElementById("telefonnr").value;
+            personer.push(person);
+            console.log(person.toString())
+
+            document.getElementById("navn").value="";
+            document.getElementById("adresse").value="";
+            document.getElementById("telefonnr").value="";
+
+        }
+
+        function visPersReg() {
+            let output ="<table><tr>" + "<th>Navn</th><th>Adresse</th><th>Telefonnr</th>" + "</tr>";
+            for(p of personer) {
+                    output+="<tr>";
+                    output+="<td>"+p.navn+"</td><td>"+p.adresse+"</td><td>"+p.telefonnr+"</td>";
+                    output+="</tr>";
+            }
+            output+="</table>";
+            document.getElementById("length").innerHTML=personer.length;
+            document.getElementById("ut").innerHTML=output;
+        }
+
+    </script>
+</head>
+<body>
+<h3>Registreringssystemet</h3>
+
+<table>
+    <tr><td>Navn</td><td><input type="text" id="navn"></td></tr>
+    <tr><td>Adresse</td><td><input type="text" id="adresse"></td></tr>
+    <tr><td>Telefonnr</td><td><input type="text" id="telefonnr"></td></tr>
+
+    <tr>
+        <td><button onclick="register()" id="register">Register</button></td>
+        <td><button onclick="visPersReg()" id="vispersreg">Vis personregister</button> </td>
+    </tr>
+</table>
+
+<div id="ut">
+
+</div>
+<div id="length"></div>
+
+</body>
+</html>
